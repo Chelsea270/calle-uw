@@ -7,14 +7,20 @@
       name="description"
       content="CALLE, Urban Dance Camp &amp; Festival de danza urbana en Managua, Nicaragua."
     />
-    <title>CALLE | Urban Dance Camp &amp; Festival</title>
+     <title>CALLE | Urban Dance Camp &amp; Festival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
   </head>
-
   <body>
-    <header>
+    <header class="barra">
       <nav>
-        <a href="#inicio">CALLE</a>
-        <ul>
+        <a href="#inicio" class="logo">CALLE</a>
+        <ul class="menu">
           <li><a href="#que-es">Qué es</a></li>
           <li><a href="#edicion-2026">2026</a></li>
           <li><a href="#galeria">Galería</a></li>
@@ -24,31 +30,89 @@
     </header>
 
     <main>
-      <section id="inicio">
+      <section id="inicio" class="portada">
         <h1>CALLE</h1>
         <p>Urban Dance Camp &amp; Festival</p>
         <p>Managua, Nicaragua</p>
-        <a href="#edicion-2026">Ver edición 2026</a>
+        <a href="#edicion-2026" class="boton">Ver edición 2026</a>
       </section>
 
       <section id="que-es">
         <h2>Qué es CALLE</h2>
+        <p class="intro">
+          CALLE es un camp y festival de danza urbana que se realiza en Managua,
+          Nicaragua. Reúne talleres con instructores internacionales, batallas y
+          un showcase abierto al público.
+        </p>
+
+        <ul class="datos">
+          <li class="dato">
+            <span class="dato__numero">2</span>
+            <span class="dato__texto">ediciones realizadas</span>
+          </li>
+          <li class="dato">
+            <span class="dato__numero">3</span>
+            <span class="dato__texto">sedes en la edición 2026</span>
+          </li>
+          <li class="dato">
+            <span class="dato__numero">3</span>
+            <span class="dato__texto">estilos en el programa</span>
+          </li>
+        </ul>
       </section>
 
       <section id="edicion-2026">
         <h2>Edición 2026</h2>
+        <p class="intro">Agosto de 2026 · Managua, Nicaragua</p>
+
+        <h3>Sedes</h3>
+        <ul class="tarjetas">
+          <li class="tarjeta">Salón del Hispamer</li>
+          <li class="tarjeta">Teatro del CCNN</li>
+          <li class="tarjeta">Hotel DoubleTree by Hilton</li>
+        </ul>
+
+        <h3>Estilos</h3>
+        <ul class="etiquetas">
+          <li>Hip-hop</li>
+          <li>Coreografía</li>
+          <li>Dancehall</li>
+        </ul>
+
+        <h3>Actividades</h3>
+        <ul class="etiquetas">
+          <li>Talleres</li>
+          <li>Batallas</li>
+          <li>Showcase</li>
+        </ul>
       </section>
 
       <section id="galeria">
         <h2>Galería</h2>
+        <p class="aviso">Pendiente: fotos y videos de la edición 2026.</p>
       </section>
 
       <section id="ediciones-anteriores">
         <h2>Ediciones anteriores</h2>
+        <ul class="tarjetas">
+          <li class="tarjeta">2025 · Primera edición</li>
+          <li class="tarjeta">2026 · Segunda edición</li>
+        </ul>
       </section>
 
-      <section id="proxima">
+      <section id="proxima" class="proxima">
         <h2>Próxima edición</h2>
+        <p class="anio">2027</p>
+        <p class="intro">
+          Seguí la cuenta para enterarte cuando abran las inscripciones.
+        </p>
+              
+        <a href="https://www.instagram.com/calle.uw/" 
+        class="boton" 
+        target="_blank" 
+        rel="noopener"
+        >Ir a Instagram</a>
+
       </section>
     </main>
 
@@ -58,4 +122,4 @@
       <p>Propuesta de sitio web no oficial · 2026</p>
     </footer>
   </body>
-</html>
+</html> 

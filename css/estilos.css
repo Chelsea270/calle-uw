@@ -1,0 +1,255 @@
+/* REINICIO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+    --negro: #0a0a0a;
+    --superficie: #171717;
+    --blanco: #f5f5f5;
+    --gris: #9a9a9a;
+    --rosa: #ff2e9f;
+    --rosa-oscuro: #c4177a;
+    --amarillo: #ffd400;
+
+    /*tIPOGRAFÍA*/
+    --fuente-titulo: "Archivo Black", Impact, sans-serif;
+    --fuente-texto: "Inter", system-ui, sans-serif;
+
+    /*MEDIDAS*/
+    --ancho-max: 1100px;
+    --espacio: 1.5rem;
+}
+
+/* BASE */
+
+body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: var(--fuente-texto);
+    line-height:1.6;
+}
+
+h1, 
+h2{
+    font-family: var(--fuente-titulo);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+h1{
+    font-size: clamp(3rem, 14vw, 7rem);
+    letter-spacing: 0.05em;
+}
+
+h2{
+    font-size:clamp(1.75rem, 6vw, 3rem);
+    color: var(--rosa);
+}
+
+a{
+    color: var(--rosa);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--amarillo);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.barra{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #262626;
+}
+
+.barra nav{
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 1rem var(--espacio);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--fuente-titulo);
+    font-size: 1.4rem;
+    color: var(--blanco);
+    letter-spacing: 0.12em;
+}
+
+.logo:hover {
+    color: var(--rosa);
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.75rem;
+}
+
+.menu a {
+    color: var(--gris);
+    font-size:0.95rem;
+}
+
+.menu a:hover {
+    color: var(--rosa);
+}
+
+/*======= SECCIONES ========*/
+
+main section {
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 5rem var(--espacio);
+}
+
+.portada {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.boton {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.9rem 2.2rem;
+    background-color: var(--rosa);
+    color: var(--negro);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.boton:hover {
+    background-color: var(--amarillo);
+    color: var(--negro);
+
+}
+
+/* PIE */
+
+footer {
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 3rem var(--espacio);
+    border-top: 1px solid #262626;
+    color: var(--gris);
+    font-size: 0.9rem;
+}
+
+/* CONTENIDO */
+
+h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gris);
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+}
+
+.intro {
+    max-width: 60ch;
+    margin-top: 1.5rem;
+}
+
+.datos {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.dato {
+    background-color: var(--superficie);
+    padding: 1.75rem 1.5rem;
+    border-left: 3px solid var(--rosa);
+}
+
+.dato__numero {
+    display: block;
+    font-family: var(--fuente-titulo);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--rosa);
+}
+
+.dato__texto{
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--gris);
+}
+
+.tarjetas {
+    list-style: none; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.tarjeta {
+    background-color: var(--superficie);
+    border: 1px solid #262626;
+    padding: 1.5rem;
+}
+
+.etiquetas {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.etiquetas li{
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--rosa);
+    color: var(--rosa);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.aviso {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px dashed #3a3a3a;
+    color: var(--gris);
+    font-size: 0.9rem;
+}
+
+.proxima {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.anio {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(4rem, 18vw, 9rem);
+    line-height: 1;
+    letter-spacing: 0.05rem;
+    color: var(--rosa);
+    margin-top: 1rem;
+}
