@@ -253,3 +253,46 @@ h3 {
     color: var(--rosa);
     margin-top: 1rem;
 }
+
+.menu-boton {
+    display: none;
+    background: none;
+    border: none; 
+    color: var(--blanco);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+@media (max-width: 720px){
+    .barra nav {
+        position: relative;
+    }
+    .menu-boton {
+        display: block;
+    }
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        background-color: var(--negro);
+        border-bottom: 1px solid #262626;
+    }
+    .menu.abierto {
+        display: flex;
+    }
+
+    .menu li{
+        padding: 0.85rem var(--espacio);
+    }
+
+    .menu a {
+        font-size: 1rem;
+    }
+}
