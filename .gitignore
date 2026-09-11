@@ -1,0 +1,9 @@
+# Capturas que genera la app de Claude
+Claude outputs/
+
+# Basura que crea Windows
+Thumbs.db
+desktop.ini
+
+# Configuración local del editor
+.vscode/
