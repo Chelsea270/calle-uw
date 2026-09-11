@@ -11,12 +11,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Permanent+Marker&family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/estilos.css" />
   </head>
   <body>
+        <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <filter id="spray" x="-35%" y="-35%" width="170%" height="170%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="9" result="ruido" />
+        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="8" xChannelSelector="R" yChannelSelector="G" result="rugoso" />
+        <feGaussianBlur in="rugoso" stdDeviation="3" result="halo" />
+        <feMerge>
+          <feMergeNode in="halo" />
+          <feMergeNode in="rugoso" />
+        </feMerge>
+      </filter>
+    </svg>
+    <div class="garabatos-pagina" aria-hidden="true">
+      <svg class="garabato garabato--p1" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M28 46 C 62 12, 112 18, 126 52 C 138 82, 96 100, 72 82 C 52 67, 64 42, 90 46" stroke-width="11" />
+              <path d="M156 24 C 186 44, 176 82, 146 86" stroke-width="8" />
+              <path d="M120 84 L 122 128" stroke-width="5" />
+              <path d="M62 96 L 60 126" stroke-width="4" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p2" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M36 44 C 72 12, 118 30, 118 64 C 118 92, 78 104, 62 82" stroke-width="11" />
+              <path d="M154 42 C 186 66, 170 108, 140 102" stroke-width="8" />
+              <path d="M60 100 L 58 130" stroke-width="5" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p3" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M40 34 C 96 20, 148 48, 130 84 C 116 112, 62 108, 60 78" stroke-width="10" />
+              <path d="M92 92 L 94 128" stroke-width="5" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p4" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M40 40 C 78 6, 124 24, 126 60 C 128 92, 86 102, 68 80" stroke-width="11" />
+              <path d="M168 30 C 200 56, 184 100, 152 96" stroke-width="8" />
+              <path d="M58 100 L 56 130" stroke-width="5" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p5" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M32 50 C 68 14, 116 32, 116 66 C 116 94, 76 106, 60 84" stroke-width="11" />
+              <path d="M152 38 C 186 64, 168 108, 138 102" stroke-width="8" />
+              <path d="M44 130 C 82 116, 104 142, 88 160" stroke-width="9" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p6" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M28 46 C 62 12, 112 18, 126 52 C 138 82, 96 100, 72 82 C 52 67, 64 42, 90 46" stroke-width="11" />
+              <path d="M156 24 C 186 44, 176 82, 146 86" stroke-width="8" />
+              <path d="M120 84 L 122 128" stroke-width="5" />
+              <path d="M62 96 L 60 126" stroke-width="4" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p7" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M36 44 C 72 12, 118 30, 118 64 C 118 92, 78 104, 62 82" stroke-width="11" />
+              <path d="M154 42 C 186 66, 170 108, 140 102" stroke-width="8" />
+              <path d="M60 100 L 58 130" stroke-width="5" />
+        </g>
+      </svg>
+      <svg class="garabato garabato--p8" viewBox="0 0 220 190">
+        <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M40 34 C 96 20, 148 48, 130 84 C 116 112, 62 108, 60 78" stroke-width="10" />
+              <path d="M92 92 L 94 128" stroke-width="5" />
+        </g>
+      </svg>
+    </div>
+
     <header class="barra">
       <nav>
         <a href="#inicio" class="logo">CALLE</a>
@@ -32,10 +102,69 @@
 
     <main>
       <section id="inicio" class="portada">
-        <h1>CALLE</h1>
-        <p>Urban Dance Camp &amp; Festival</p>
-        <p>Managua, Nicaragua</p>
-        <a href="#edicion-2026" class="boton">Ver edición 2026</a>
+        <div class="portada__fondo"></div>
+
+        <div class="garabatos-portada" aria-hidden="true">
+          <svg class="garabato garabato--h1" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M28 46 C 62 12, 112 18, 126 52 C 138 82, 96 100, 72 82 C 52 67, 64 42, 90 46" stroke-width="11" />
+              <path d="M156 24 C 186 44, 176 82, 146 86" stroke-width="8" />
+              <path d="M120 84 L 122 128" stroke-width="5" />
+              <path d="M62 96 L 60 126" stroke-width="4" />
+            </g>
+          </svg>
+          <svg class="garabato garabato--h2" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M40 40 C 78 6, 124 24, 126 60 C 128 92, 86 102, 68 80" stroke-width="11" />
+              <path d="M168 30 C 200 56, 184 100, 152 96" stroke-width="8" />
+              <path d="M58 100 L 56 130" stroke-width="5" />
+            </g>
+          </svg>
+          <svg class="garabato garabato--h3" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M40 34 C 96 20, 148 48, 130 84 C 116 112, 62 108, 60 78" stroke-width="10" />
+              <path d="M92 92 L 94 128" stroke-width="5" />
+            </g>
+          </svg>
+          <svg class="garabato garabato--h4" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M36 44 C 72 12, 118 30, 118 64 C 118 92, 78 104, 62 82" stroke-width="11" />
+              <path d="M154 42 C 186 66, 170 108, 140 102" stroke-width="8" />
+              <path d="M60 100 L 58 130" stroke-width="5" />
+            </g>
+          </svg>
+          <svg class="garabato garabato--h5" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M32 50 C 68 14, 116 32, 116 66 C 116 94, 76 106, 60 84" stroke-width="11" />
+              <path d="M152 38 C 186 64, 168 108, 138 102" stroke-width="8" />
+              <path d="M44 130 C 82 116, 104 142, 88 160" stroke-width="9" />
+            </g>
+          </svg>
+          <svg class="garabato garabato--h6" viewBox="0 0 220 190">
+            <g fill="none" stroke="#f2e900" stroke-linecap="round">
+              <path d="M28 46 C 62 12, 112 18, 126 52 C 138 82, 96 100, 72 82 C 52 67, 64 42, 90 46" stroke-width="11" />
+              <path d="M156 24 C 186 44, 176 82, 146 86" stroke-width="8" />
+              <path d="M120 84 L 122 128" stroke-width="5" />
+              <path d="M62 96 L 60 126" stroke-width="4" />
+            </g>
+          </svg>
+        </div>
+
+        <p class="fechas"><span>14</span><span>15</span><span>16</span><b>DE AGOSTO</b></p>
+        <p class="sede"><span>M</span><span>G</span><span>A</span><b>NICARAGUA</b></p>
+
+        <div class="portada__contenido">
+          <h1 class="portada__titulo">
+            <img src="img/logo/logo-calle-rosa.png" alt="CALLE — Urban Dance Camp &amp; Festival" />
+          </h1>
+
+          <div class="carteles">
+            <p class="cartel">Urban Dance Workshops</p>
+            <p class="cartel cartel--chico">Showcase &amp; Batallas</p>
+          </div>
+
+          <a href="#edicion-2026" class="boton">Ver edición 2026</a>
+        </div>
       </section>
 
       <section id="que-es">

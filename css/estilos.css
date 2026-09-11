@@ -12,9 +12,9 @@
     --superficie: #171717;
     --blanco: #f5f5f5;
     --gris: #9a9a9a;
-    --rosa: #ff2e9f;
-    --rosa-oscuro: #c4177a;
-    --amarillo: #ffd400;
+    --rosa: #d947f7;
+    --rosa-oscuro: #a935c2;
+    --amarillo: #f2e900;
 
     /*tIPOGRAFÍA*/
     --fuente-titulo: "Archivo Black", Impact, sans-serif;
@@ -34,16 +34,16 @@ body {
     line-height:1.6;
 }
 
-h1, 
-h2{
-    font-family: var(--fuente-titulo);
-    line-height: 1.1;
-    text-transform: uppercase;
+h1,
+h2 {
+    font-family: "Permanent Marker", var(--fuente-titulo);
+    line-height: 1.15;
+    text-transform: none;
+    text-shadow: 4px 4px 0 var(--amarillo);
 }
 
-h1{
-    font-size: clamp(3rem, 14vw, 7rem);
-    letter-spacing: 0.05em;
+h1 {
+    text-shadow: none;
 }
 
 h2{
@@ -128,6 +128,8 @@ main section {
 
 .boton {
     display: inline-block;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease,
+        transform 0.25s ease;
     margin-top: 2rem;
     padding: 0.9rem 2.2rem;
     background-color: var(--rosa);
@@ -141,7 +143,8 @@ main section {
 .boton:hover {
     background-color: var(--amarillo);
     color: var(--negro);
-
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px rgba(242, 233, 0, 0.55), 0 0 44px rgba(242, 233, 0, 0.25);
 }
 
 /* PIE */
@@ -184,6 +187,15 @@ h3 {
     background-color: var(--superficie);
     padding: 1.75rem 1.5rem;
     border-left: 3px solid var(--rosa);
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.dato:hover {
+    transform: translateY(-6px);
+    background-color: #1d1d20;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55),
+        -3px 0 16px rgba(217, 71, 247, 0.35);
 }
 
 .dato__numero {
@@ -212,6 +224,15 @@ h3 {
     background-color: var(--superficie);
     border: 1px solid #262626;
     padding: 1.5rem;
+    transition: transform 0.25s ease, border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px);
+    border-color: var(--rosa);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55),
+        0 0 18px rgba(217, 71, 247, 0.28);
 }
 
 .etiquetas {
@@ -252,6 +273,43 @@ h3 {
     letter-spacing: 0.05rem;
     color: var(--rosa);
     margin-top: 1rem;
+    animation: latido 2.6s ease-in-out infinite;
+}
+
+@keyframes latido {
+    0%,
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 18px rgba(217, 71, 247, 0.35);
+    }
+    50% {
+        transform: scale(1.035);
+        text-shadow: 0 0 28px rgba(217, 71, 247, 0.7),
+            0 0 60px rgba(217, 71, 247, 0.3);
+    }
+}
+
+/* quien pidió menos movimiento en su sistema, no lo recibe */
+@media (prefers-reduced-motion: reduce) {
+    .anio {
+        animation: none;
+        text-shadow: 0 0 18px rgba(217, 71, 247, 0.35);
+    }
+
+    .dato,
+    .tarjeta,
+    .etiquetas li,
+    .boton,
+    .portada__titulo img {
+        transition: none;
+    }
+
+    .dato:hover,
+    .tarjeta:hover,
+    .etiquetas li:hover,
+    .boton:hover {
+        transform: none;
+    }
 }
 
 .menu-boton {
@@ -296,3 +354,216 @@ h3 {
         font-size: 1rem;
     }
 }
+
+/* PORTADA */
+
+.portada {
+    position: relative;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.portada__fondo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: #111113;
+    /* cuando tengas la foto, descomenta esta linea:
+    background-image: url("../img/fondo-calle.jpg"); */
+    background-size: cover;
+    background-position: center;
+    will-change: filter;
+}
+
+.portada__fondo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+        ellipse 72% 56% at 50% 45%,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.55) 68%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+/* GARABATOS */
+
+body {
+    position: relative;
+}
+
+/* capa que recorre el resto de la pagina, por detras de todo */
+.garabatos-pagina {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* el contenido va por encima de esa capa */
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* garabatos propios de la portada: sobre la foto, bajo el contenido */
+.garabatos-portada {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.garabato {
+    position: absolute;
+    width: clamp(110px, 13vw, 195px);
+    height: auto;
+    filter: url(#spray);
+    opacity: 0.85;
+}
+
+/* los del resto de la pagina: mismo tamano que los de la portada,
+   pegados a los bordes y un poco mas atras para no pelear con el texto */
+.garabatos-pagina .garabato {
+    opacity: 0.7;
+}
+
+/* --- en la portada: lejos del logo, de las fechas y del MGA --- */
+.garabato--h1 { top: 3%;     left: 1.5%;  }
+.garabato--h2 { top: 2%;     right: 2%;   transform: scaleX(-1); }
+.garabato--h3 { top: 38%;    right: 13%;  transform: scaleY(-1); }
+.garabato--h4 { bottom: 13%; left: 2%;    transform: scaleY(-1); }
+.garabato--h5 { bottom: 12%; right: 2.5%; transform: scale(-1, -1); }
+.garabato--h6 { top: 26%;    left: 52%;   transform: scaleX(-1); opacity: 0.45; }
+
+/* --- por el resto de la pagina --- */
+.garabato--p1 { top: 29%;     left: 0;   }
+.garabato--p2 { top: 36%;     right: 0;  transform: scaleX(-1); }
+.garabato--p3 { top: 45%;     left: 0;   transform: scaleY(-1); }
+.garabato--p4 { top: 53%;     right: 0;  transform: scale(-1, -1); }
+.garabato--p5 { top: 62%;     left: 0;   }
+.garabato--p6 { top: 70%;     right: 0;  transform: scaleX(-1); }
+.garabato--p7 { top: 80%;     left: 0;   transform: scaleY(-1); }
+.garabato--p8 { bottom: 2%;   right: 0;  transform: scale(-1, -1); }
+
+/* textos amarillos de los lados */
+
+.fechas,
+.sede {
+    position: absolute;
+    z-index: 4;
+    pointer-events: none;
+    top: 34%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--fuente-titulo);
+    font-size: clamp(1.9rem, 3.6vw, 3.25rem);
+    line-height: 0.94;
+    color: var(--amarillo);
+}
+
+.fechas { left: clamp(1.25rem, 7vw, 7rem); }
+.sede { right: clamp(1.25rem, 7vw, 7rem); }
+
+.fechas b,
+.sede b {
+    writing-mode: vertical-rl;
+    margin-top: 0.7rem;
+    font-family: var(--fuente-texto);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+}
+
+/* contenido */
+
+.portada__contenido {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: var(--ancho-max);
+    padding: 0 var(--espacio);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.portada__titulo {
+    align-self: flex-start;
+    margin-left: 0;
+}
+
+.portada__titulo img {
+    width: clamp(190px, 30vw, 420px);
+    filter: drop-shadow(0 0 14px rgba(217, 71, 247, 0.35));
+    transition: filter 0.4s ease;
+}
+
+.portada__titulo img:hover {
+    filter: drop-shadow(0 0 10px rgba(217, 71, 247, 0.75))
+            drop-shadow(0 0 34px rgba(217, 71, 247, 0.45));
+}
+
+.carteles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.cartel {
+    background-color: var(--blanco);
+    color: var(--negro);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(0.95rem, 2.2vw, 1.8rem);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.6em 1.1em;
+}
+
+.cartel--chico {
+    font-size: clamp(0.8rem, 1.8vw, 1.45rem);
+}
+
+@media (max-width: 1200px) {
+    .garabatos-pagina .garabato {
+        width: 116px;
+        opacity: 0.33;
+    }
+}
+
+@media (max-width: 720px) {
+    .garabato {
+        width: 96px;
+        opacity: 0.7;
+    }
+
+    .garabato--h3,
+    .garabato--h6,
+    .garabato--p3,
+    .garabato--p5,
+    .garabato--p7 {
+        display: none;
+    }
+
+    .fechas,
+    .sede {
+        top: 12%;
+    }
+    .portada__titulo {
+        align-self: center;
+        margin-left: 0;
+    }
+}
+

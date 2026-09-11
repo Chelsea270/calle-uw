@@ -15,4 +15,21 @@ menu.addEventListener("click", (evento) =>{
     }
 });
 
+// Desenfoca el fondo de la portada a medida que se baja
+const fondoPortada = document.querySelector(".portada__fondo");
 
+if (fondoPortada) {
+  let enEspera = false;
+
+  window.addEventListener("scroll", () => {
+    if (enEspera) return;
+    enEspera = true;
+
+    requestAnimationFrame(() => {
+      const avance = Math.min(window.scrollY / window.innerHeight, 1);
+      fondoPortada.style.filter = "blur(" + avance * 14 + "px)";
+      fondoPortada.style.opacity = 1 - avance * 0.45;
+      enEspera = false;
+    });
+  });
+}
