@@ -27,11 +27,53 @@
 
 /* BASE */
 
-body {
+/* el negro se queda aca, como color de respaldo por si la foto no carga */
+html {
     background-color: var(--negro);
+}
+
+body {
+    /* sin color de fondo: si lo pusiera aqui taparia la foto */
+    background-color: transparent;
     color: var(--blanco);
     font-family: var(--fuente-texto);
     line-height:1.6;
+}
+
+/* LA FOTO DEL CALLEJON, DETRAS DE TODA LA PAGINA
+   position: fixed = se queda pegada a la pantalla mientras se baja.
+   z-index: -2 = se dibuja por detras de todo el contenido del body. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30px; /* se pasa 30px de cada lado para que el desenfoque no deje bordes */
+    z-index: -2;
+    background-image: url("../img/fondo-calle.jpg");
+    background-size: cover;
+    background-position: center;
+    /* main.js va subiendo esta variable a medida que se baja */
+    filter: blur(var(--desenfoque, 0px));
+    will-change: filter;
+}
+
+/* EL SOMBREADO NEGRO, encima de la foto y debajo del contenido.
+   Son dos cosas en la misma capa:
+   1. el degradado radial = el borde oscuro alrededor de toda la pantalla
+   2. el color de fondo = el velo parejo, muy suave, sobre toda la foto */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(
+        ellipse 76% 70% at 50% 50%,
+        rgba(0, 0, 0, 0) 22%,
+        rgba(0, 0, 0, 0.3) 58%,
+        rgba(0, 0, 0, 0.72) 84%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+    background-color: rgba(10, 10, 10, 0.2);
 }
 
 h1,
@@ -175,6 +217,21 @@ h3 {
     margin-top: 1.5rem;
 }
 
+/* como ahora hay una foto detras, el texto suelto necesita un
+   halo negro para seguir leyendose */
+main p,
+footer p,
+h3 {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* dentro de las tarjetas el fondo ya es solido, ahi no hace falta */
+.dato *,
+.tarjeta,
+.cartel {
+    text-shadow: none;
+}
+
 .datos {
     list-style: none;
     display: grid;
@@ -255,6 +312,7 @@ h3 {
     margin-top: 1.5rem;
     padding: 1.5rem;
     border: 1px dashed #3a3a3a;
+    background-color: rgba(10, 10, 10, 0.55);
     color: var(--gris);
     font-size: 0.9rem;
 }
@@ -370,91 +428,16 @@ h3 {
     overflow: hidden;
 }
 
-.portada__fondo {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-color: #111113;
-    /* cuando tengas la foto, descomenta esta linea:
-    background-image: url("../img/fondo-calle.jpg"); */
-    background-size: cover;
-    background-position: center;
-    will-change: filter;
-}
-
-.portada__fondo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(
-        ellipse 72% 56% at 50% 45%,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.55) 68%,
-        rgba(0, 0, 0, 0.85) 100%
-    );
-}
-
-/* GARABATOS */
-
+/* el contenido va por encima de las capas del fondo */
 body {
     position: relative;
 }
 
-/* capa que recorre el resto de la pagina, por detras de todo */
-.garabatos-pagina {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-/* el contenido va por encima de esa capa */
 main,
 footer {
     position: relative;
     z-index: 1;
 }
-
-/* garabatos propios de la portada: sobre la foto, bajo el contenido */
-.garabatos-portada {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.garabato {
-    position: absolute;
-    width: clamp(110px, 13vw, 195px);
-    height: auto;
-    filter: url(#spray);
-    opacity: 0.85;
-}
-
-/* los del resto de la pagina: mismo tamano que los de la portada,
-   pegados a los bordes y un poco mas atras para no pelear con el texto */
-.garabatos-pagina .garabato {
-    opacity: 0.7;
-}
-
-/* --- en la portada: lejos del logo, de las fechas y del MGA --- */
-.garabato--h1 { top: 3%;     left: 1.5%;  }
-.garabato--h2 { top: 2%;     right: 2%;   transform: scaleX(-1); }
-.garabato--h3 { top: 38%;    right: 13%;  transform: scaleY(-1); }
-.garabato--h4 { bottom: 13%; left: 2%;    transform: scaleY(-1); }
-.garabato--h5 { bottom: 12%; right: 2.5%; transform: scale(-1, -1); }
-.garabato--h6 { top: 26%;    left: 52%;   transform: scaleX(-1); opacity: 0.45; }
-
-/* --- por el resto de la pagina --- */
-.garabato--p1 { top: 29%;     left: 0;   }
-.garabato--p2 { top: 36%;     right: 0;  transform: scaleX(-1); }
-.garabato--p3 { top: 45%;     left: 0;   transform: scaleY(-1); }
-.garabato--p4 { top: 53%;     right: 0;  transform: scale(-1, -1); }
-.garabato--p5 { top: 62%;     left: 0;   }
-.garabato--p6 { top: 70%;     right: 0;  transform: scaleX(-1); }
-.garabato--p7 { top: 80%;     left: 0;   transform: scaleY(-1); }
-.garabato--p8 { bottom: 2%;   right: 0;  transform: scale(-1, -1); }
 
 /* textos amarillos de los lados */
 
@@ -536,27 +519,7 @@ footer {
     font-size: clamp(0.8rem, 1.8vw, 1.45rem);
 }
 
-@media (max-width: 1200px) {
-    .garabatos-pagina .garabato {
-        width: 116px;
-        opacity: 0.33;
-    }
-}
-
 @media (max-width: 720px) {
-    .garabato {
-        width: 96px;
-        opacity: 0.7;
-    }
-
-    .garabato--h3,
-    .garabato--h6,
-    .garabato--p3,
-    .garabato--p5,
-    .garabato--p7 {
-        display: none;
-    }
-
     .fechas,
     .sede {
         top: 12%;

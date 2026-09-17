@@ -15,21 +15,19 @@ menu.addEventListener("click", (evento) =>{
     }
 });
 
-// Desenfoca el fondo de la portada a medida que se baja
-const fondoPortada = document.querySelector(".portada__fondo");
+// Desenfoca la foto del callejon a medida que se baja.
+// La foto vive en body::before, y a un pseudo-elemento no se le puede
+// tocar el estilo desde JS. Lo que si se puede es cambiarle una variable
+// CSS al body: el CSS hace filter: blur(var(--desenfoque)).
+let enEspera = false;
 
-if (fondoPortada) {
-  let enEspera = false;
+window.addEventListener("scroll", () => {
+  if (enEspera) return;
+  enEspera = true;
 
-  window.addEventListener("scroll", () => {
-    if (enEspera) return;
-    enEspera = true;
-
-    requestAnimationFrame(() => {
-      const avance = Math.min(window.scrollY / window.innerHeight, 1);
-      fondoPortada.style.filter = "blur(" + avance * 14 + "px)";
-      fondoPortada.style.opacity = 1 - avance * 0.45;
-      enEspera = false;
-    });
+  requestAnimationFrame(() => {
+    const avance = Math.min(window.scrollY / window.innerHeight, 1);
+    document.body.style.setProperty("--desenfoque", avance * 7 + "px");
+    enEspera = false;
   });
-}
+});
